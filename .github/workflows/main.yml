@@ -7,8 +7,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 17 }
-      - uses: gradle/gradle-build-action@v3
-      - run: chmod +x ./gradlew || true
-      - run: ./gradlew assembleDebug || gradle assembleDebug
+      - uses: android-actions/setup-android@v3
+      - run: gradle assembleDebug
       - uses: actions/upload-artifact@v4
         with: { name: CORONAR-NetFree-APK, path: app/build/outputs/apk/debug/*.apk }
